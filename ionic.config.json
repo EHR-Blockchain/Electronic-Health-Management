@@ -1,0 +1,7 @@
+{
+  "name": "DIM",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
