@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { PatientsPage } from '../pages/patients/patients';
 import { DataServiceProvider } from '../providers/data-service/data-service';
+import { ProfilePage } from '../pages/profile/profile';
 
 @Component({
   templateUrl: 'app.html',
@@ -15,7 +16,7 @@ import { DataServiceProvider } from '../providers/data-service/data-service';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = PatientsPage;
+  rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -25,7 +26,9 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'List', component: ListPage },
+      {title:'Profile',component:ProfilePage}
+     
     ];
 
   }

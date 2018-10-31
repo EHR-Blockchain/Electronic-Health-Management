@@ -26,6 +26,12 @@ export class DataServiceProvider {
       res
     );
   }
+  getPatientProfile()
+  {
+    return this.http.get(this.baseUrl+'PatientProfile/'+'pat1').map(res=>
+      res
+    );
+  }
 
   private catchError(error:Response|any)
   {

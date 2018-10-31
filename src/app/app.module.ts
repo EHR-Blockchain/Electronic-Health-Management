@@ -11,13 +11,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { DataServiceProvider } from '../providers/data-service/data-service';
 import { HttpClientModule } from '@angular/common/http';
 import { PatientsPage } from '../pages/patients/patients';
+import { ProfilePage } from '../pages/profile/profile';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListPage,
-    PatientsPage
+    PatientsPage,
+    ProfilePage
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,8 @@ import { PatientsPage } from '../pages/patients/patients';
     MyApp,
     HomePage,
     ListPage,
-    PatientsPage
+    PatientsPage,
+    ProfilePage
   ],
   providers: [
     StatusBar,
