@@ -15,4 +15,7 @@
 
 <ion-content padding>
   <button ion-button (click)="scanBarcode()">Scan</button>
+  <ion-card *ngIf="docId">
+{{docId}}
+  </ion-card>
 </ion-content>

@@ -15,6 +15,7 @@ import { BarcodeScanner,BarcodeScannerOptions } from '@ionic-native/barcode-scan
 })
 export class QrcodePage {
   options:BarcodeScannerOptions;
+  docId:any;
   constructor(private barcodeScanner: BarcodeScanner,public navCtrl: NavController, public navParams: NavParams) {
     
   }
@@ -28,6 +29,8 @@ export class QrcodePage {
    
       const results = await this.barcodeScanner.scan()
       console.log(results)
-    
+      alert(results.format)
+      this.docId=results.text
+      
   }
 }
