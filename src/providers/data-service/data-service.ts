@@ -38,7 +38,7 @@ export class DataServiceProvider {
     this.patientId=patId
     return this.http.get(this.baseUrl+'Patient/'+this.patientId).map(res=>
       res
-    )
+    ).catch(res => Observable.throw(res))
   }
   getMedicalRecordByPatId()
   {

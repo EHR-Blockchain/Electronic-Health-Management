@@ -51,6 +51,14 @@ export class SigninPage {
          alert.present();
         
       }
+    },err=>{
+      console.log(err)
+      const alert = this.alertCtrl.create({
+        title: 'Signin Failed!',
+        message: 'Wrong Credentials/User doesn\'t exist',
+        buttons: ['Ok']
+      });
+      alert.present();
     })
     
 
