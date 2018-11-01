@@ -12,6 +12,7 @@ import { DataServiceProvider } from '../providers/data-service/data-service';
 import { HttpClientModule } from '@angular/common/http';
 import { PatientsPage } from '../pages/patients/patients';
 import { ProfilePage } from '../pages/profile/profile';
+import { PatientmedicalrecordPage } from '../pages/patientmedicalrecord/patientmedicalrecord';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ProfilePage } from '../pages/profile/profile';
     HomePage,
     ListPage,
     PatientsPage,
-    ProfilePage
+    ProfilePage,
+    PatientmedicalrecordPage
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,8 @@ import { ProfilePage } from '../pages/profile/profile';
     HomePage,
     ListPage,
     PatientsPage,
-    ProfilePage
+    ProfilePage,
+    PatientmedicalrecordPage
   ],
   providers: [
     StatusBar,

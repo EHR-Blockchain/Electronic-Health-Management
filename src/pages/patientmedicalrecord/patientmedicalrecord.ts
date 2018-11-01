@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import {DataServiceProvider} from '../../providers/data-service/data-service';
+import { HttpClient} from '@angular/common/http';
+import * as moment from 'moment';
 /**
  * Generated class for the PatientmedicalrecordPage page.
  *
@@ -14,12 +16,31 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'patientmedicalrecord.html',
 })
 export class PatientmedicalrecordPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  records: any = []
+  date: any;
+//   var str = '2011-04-11T10:20:30Z';
+// var date = moment(str);
+// var dateComponent = date.utc().format('YYYY-MM-DD');
+// var timeComponent = date.utc().format('HH:mm:ss');
+// console.log(dateComponent);
+// console.log(timeComponent);
+  constructor(public http:HttpClient,public dataService:DataServiceProvider,public navCtrl: NavController, public navParams: NavParams) {
+   this.date = moment()
+   console.log(this.date)
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PatientmedicalrecordPage');
   }
+  
+  getMedicalRecordByPatId()
+  {
+     this.dataService.getMedicalRecordByPatId().subscribe(res=>{
+     console.log(res)
+     this.records=res
+      
+     })
+      
 
+  }
 }

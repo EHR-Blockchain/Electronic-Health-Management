@@ -32,7 +32,11 @@ export class DataServiceProvider {
       res
     );
   }
-
+  getMedicalRecordByPatId()
+  {
+    return this.http.get(this.baseUrl+'queries/selectMedicalRecordByPatientId?patientId=pat1').map(res=>
+      res);
+  }
   private catchError(error:Response|any)
   {
     console.log(error);

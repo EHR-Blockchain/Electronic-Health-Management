@@ -8,6 +8,7 @@ import { ListPage } from '../pages/list/list';
 import { PatientsPage } from '../pages/patients/patients';
 import { DataServiceProvider } from '../providers/data-service/data-service';
 import { ProfilePage } from '../pages/profile/profile';
+import { PatientmedicalrecordPage } from '../pages/patientmedicalrecord/patientmedicalrecord';
 
 @Component({
   templateUrl: 'app.html',
@@ -27,7 +28,8 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage },
-      {title:'Profile',component:ProfilePage}
+      {title:'Profile',component:ProfilePage},
+      {title: 'MedicalRecord',component:PatientmedicalrecordPage}
      
     ];
 
