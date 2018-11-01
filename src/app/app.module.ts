@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { PatientsPage } from '../pages/patients/patients';
 import { ProfilePage } from '../pages/profile/profile';
 import { PatientmedicalrecordPage } from '../pages/patientmedicalrecord/patientmedicalrecord';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { QrcodePage } from '../pages/qrcode/qrcode';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { PatientmedicalrecordPage } from '../pages/patientmedicalrecord/patientm
     ListPage,
     PatientsPage,
     ProfilePage,
-    PatientmedicalrecordPage
+    PatientmedicalrecordPage,
+    QrcodePage
   ],
   imports: [
     BrowserModule,
@@ -35,13 +38,15 @@ import { PatientmedicalrecordPage } from '../pages/patientmedicalrecord/patientm
     ListPage,
     PatientsPage,
     ProfilePage,
-    PatientmedicalrecordPage
+    PatientmedicalrecordPage,
+    QrcodePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    DataServiceProvider
+    DataServiceProvider,
+    BarcodeScanner
   ]
 })
 export class AppModule {}
