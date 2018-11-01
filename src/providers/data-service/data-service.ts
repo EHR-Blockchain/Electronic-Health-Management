@@ -1,4 +1,4 @@
-import { HttpClient} from '@angular/common/http';
+import { HttpClient,HttpHeaders} from '@angular/common/http';
 import { Response} from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
@@ -15,6 +15,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class DataServiceProvider {
   baseUrl:string
+  patientId: string
   
   constructor(public http: HttpClient) {
     this.baseUrl = 'http://192.168.0.9:3000/api/';
@@ -28,13 +29,20 @@ export class DataServiceProvider {
   }
   getPatientProfile()
   {
-    return this.http.get(this.baseUrl+'PatientProfile/'+'pat1').map(res=>
+    return this.http.get(this.baseUrl+'PatientProfile/'+this.patientId).map(res=>
       res
     );
   }
+  signIn(patId:string,password:string)
+  {
+    this.patientId=patId
+    return this.http.get(this.baseUrl+'Patient/'+this.patientId).map(res=>
+      res
+    )
+  }
   getMedicalRecordByPatId()
   {
-    return this.http.get(this.baseUrl+'queries/selectMedicalRecordByPatientId?patientId=pat1').map(res=>
+    return this.http.get(this.baseUrl+'queries/selectMedicalRecordByPatientId?patientId='+this.patientId).map(res=>
       res);
   }
   private catchError(error:Response|any)

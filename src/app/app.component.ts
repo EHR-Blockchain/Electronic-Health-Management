@@ -9,6 +9,7 @@ import { PatientsPage } from '../pages/patients/patients';
 import { DataServiceProvider } from '../providers/data-service/data-service';
 import { ProfilePage } from '../pages/profile/profile';
 import { PatientmedicalrecordPage } from '../pages/patientmedicalrecord/patientmedicalrecord';
+import { SigninPage } from '../pages/signin/signin';
 
 @Component({
   templateUrl: 'app.html',
@@ -17,7 +18,7 @@ import { PatientmedicalrecordPage } from '../pages/patientmedicalrecord/patientm
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any =SigninPage;
 
   pages: Array<{title: string, component: any}>;
 

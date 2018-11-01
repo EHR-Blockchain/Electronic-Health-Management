@@ -7,6 +7,7 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Observable';
 import { Headers } from '@angular/http';
+import * as moment from 'moment';
 /**
  * Generated class for the QrcodePage page.
  *
@@ -22,6 +23,7 @@ import { Headers } from '@angular/http';
 export class QrcodePage {
   options:BarcodeScannerOptions;
   docId:any;
+  date: any;
   body:any = {
     "$class": "org.med.chain.AllowDoctorWrite",
     "patient": "pat1",
@@ -29,9 +31,9 @@ export class QrcodePage {
     "timestamp": "2018-11-01T05:11:23.883Z"
   }
   constructor(public http: HttpClient,private barcodeScanner: BarcodeScanner,public navCtrl: NavController, public navParams: NavParams) {
-  
+    this.body.timestamp = moment();
   }
-
+  
   ionViewDidLoad() {
     console.log('ionViewDidLoad QrcodePage');
   }
@@ -44,6 +46,7 @@ export class QrcodePage {
       alert(results.format)
       this.docId=results.text;
       this.body.doctorId=this.docId;
+      this.body.timestamp = moment();
       this.postAllowDoctorWrite()
       
   }
@@ -56,6 +59,6 @@ export class QrcodePage {
     ).subscribe(res=>{
       console.log(res);
     })
-    alert("hurray!")
+    alert("You have given access to a new doctor")
   }
 }
