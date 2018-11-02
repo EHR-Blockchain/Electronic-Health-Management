@@ -8,6 +8,7 @@ import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Observable';
 import { Headers } from '@angular/http';
 import * as moment from 'moment';
+import {DataServiceProvider} from '../../providers/data-service/data-service';
 /**
  * Generated class for the QrcodePage page.
  *
@@ -25,12 +26,15 @@ export class QrcodePage {
   docId:any;
   date: any;
   body:any = {
-    "$class": "org.med.chain.AllowDoctorWrite",
-    "patient": "pat1",
-    "doctorId": "doc1",
-    "timestamp": "2018-11-01T05:11:23.883Z"
+    
+      "$class": "org.med.chain.AllowDoctorWrite",
+      "patient": "string",
+      "doctorId": "string",
+      
+      "timestamp": "2018-11-02T13:06:34.842Z"
+    
   }
-  constructor(public http: HttpClient,private barcodeScanner: BarcodeScanner,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public dataService:DataServiceProvider,public http: HttpClient,private barcodeScanner: BarcodeScanner,public navCtrl: NavController, public navParams: NavParams) {
     this.body.timestamp = moment();
   }
   
@@ -44,6 +48,7 @@ export class QrcodePage {
       const results = await this.barcodeScanner.scan()
       console.log(results)
       alert(results.format)
+      this.body.patient = this.dataService.patientId;
       this.docId=results.text;
       this.body.doctorId=this.docId;
       this.body.timestamp = moment();
@@ -54,8 +59,8 @@ export class QrcodePage {
   postAllowDoctorWrite(){
     let headers = new HttpHeaders();
     headers.append('Content-Type','application/json');
-    this.http.post('http://192.168.0.9:3000/api/AllowDoctorWrite',this.body,{headers:headers}).map(res=>
-     res
+    this.http.post('http://172.16.8.95:3000/api/AllowDoctorWrite',this.body,{headers:headers}).map(res=>
+     alert(res)
     ).subscribe(res=>{
       console.log(res);
     })

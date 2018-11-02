@@ -18,7 +18,7 @@ export class DataServiceProvider {
   patientId: string
   
   constructor(public http: HttpClient) {
-    this.baseUrl = 'http://192.168.0.9:3000/api/';
+    this.baseUrl = 'http://172.16.8.95:3000/api/';
     console.log('Hello DataServiceProvider Provider');
   }
   getPatients()
