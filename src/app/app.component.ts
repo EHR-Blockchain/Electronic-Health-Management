@@ -10,6 +10,7 @@ import { DataServiceProvider } from '../providers/data-service/data-service';
 import { ProfilePage } from '../pages/profile/profile';
 import { PatientmedicalrecordPage } from '../pages/patientmedicalrecord/patientmedicalrecord';
 import { SigninPage } from '../pages/signin/signin';
+import { AboutPage } from '../pages/about/about';
 
 @Component({
   templateUrl: 'app.html',
@@ -18,8 +19,8 @@ import { SigninPage } from '../pages/signin/signin';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any =SigninPage;
-
+  rootPage: any =ProfilePage;
+  
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
@@ -27,11 +28,12 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage },
+      
       {title:'Profile',component:ProfilePage},
-      {title: 'MedicalRecord',component:PatientmedicalrecordPage}
-     
+      {title:'QRCode',component:HomePage},
+      {title: 'Medical Records',component:PatientmedicalrecordPage},
+      {title: 'About',component:AboutPage}
+      
     ];
 
   }

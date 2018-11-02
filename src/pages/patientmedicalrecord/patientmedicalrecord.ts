@@ -17,7 +17,7 @@ import * as moment from 'moment';
 })
 export class PatientmedicalrecordPage {
   records: any = []
-  date: any;
+  
 //   var str = '2011-04-11T10:20:30Z';
 // var date = moment(str);
 // var dateComponent = date.utc().format('YYYY-MM-DD');
@@ -25,12 +25,16 @@ export class PatientmedicalrecordPage {
 // console.log(dateComponent);
 // console.log(timeComponent);
   constructor(public http:HttpClient,public dataService:DataServiceProvider,public navCtrl: NavController, public navParams: NavParams) {
-   this.date = moment()
-   console.log(this.date)
+    
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PatientmedicalrecordPage');
+    this.dataService.getMedicalRecordByPatId().subscribe(res=>{
+      console.log(res)
+      this.records=res
+       
+      })
   }
   
   getMedicalRecordByPatId()

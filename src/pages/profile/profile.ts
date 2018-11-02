@@ -8,6 +8,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Observable';
+import { PatientmedicalrecordPage } from '../patientmedicalrecord/patientmedicalrecord';
 /**
  * Generated class for the ProfilePage page.
  *
@@ -24,23 +25,18 @@ export class ProfilePage {
   profile: any;
   src='';
   constructor(public http: HttpClient,private dataService:DataServiceProvider,public navCtrl: NavController, public navParams: NavParams) {
-  //   this.http.get('https://api.github.com/users/cruzer3008')
-  //  .map(res=>
-  //    console.log(res)
-  //  );
+    this.dataService.getPatientProfile().subscribe((res)=>{
+      console.log(res)
+      this.profile=res
+    })
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');
   }
-  
-  getPatientProfile()
+  openMedicalRecords()
   {
-    this.dataService.getPatientProfile().subscribe((res)=>{
-      console.log(res)
-      this.profile=res
-    })
-    
+    this.navCtrl.setRoot(PatientmedicalrecordPage)
   }
    
 }

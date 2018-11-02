@@ -16,6 +16,7 @@ import { PatientmedicalrecordPage } from '../pages/patientmedicalrecord/patientm
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { QrcodePage } from '../pages/qrcode/qrcode';
 import { SigninPage } from '../pages/signin/signin';
+import { AboutPage } from '../pages/about/about';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SigninPage } from '../pages/signin/signin';
     ProfilePage,
     PatientmedicalrecordPage,
     QrcodePage,
-    SigninPage
+    SigninPage,
+    AboutPage
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,8 @@ import { SigninPage } from '../pages/signin/signin';
     ProfilePage,
     PatientmedicalrecordPage,
     QrcodePage,
-    SigninPage
+    SigninPage,
+    AboutPage
   ],
   providers: [
     StatusBar,

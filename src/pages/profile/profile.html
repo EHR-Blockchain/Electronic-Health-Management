@@ -15,7 +15,7 @@
 
 
 <ion-content padding>
-<button ion-button (click)="getPatientProfile()">Profile</button>
+<!-- <button ion-button (click)="getPatientProfile()">Profile</button> -->
 <ion-card *ngIf="profile">
   <!-- <ion-card-header>
    {{profile.firstName}}
@@ -28,7 +28,7 @@
   </ion-item> -->
   <ion-list>
     <ion-item>
-       <h3>Name: <b>{{profile.firstName}} {{profile.lastName}}</b></h3> 
+       <h3>Hi! <b>{{profile.firstName}} {{profile.lastName}}</b></h3> 
       </ion-item>
   <ion-item>
       <h4>Email: {{profile.EmailAddress}}</h4>
@@ -50,4 +50,10 @@
     </ion-item>
  </ion-list>
 </ion-card>
+
+<button ion-button icon-start color="dark" (click)="openMedicalRecords()">
+  <ion-icon name="medkit"></ion-icon>
+  Medical Records
+</button>
+<button ion-button icon-start color="dark"><ion-icon name="qr-scanner"></ion-icon>Scan</button>
 </ion-content>

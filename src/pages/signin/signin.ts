@@ -5,6 +5,7 @@ import { PatientmedicalrecordPage } from '../patientmedicalrecord/patientmedical
 import {DataServiceProvider} from '../../providers/data-service/data-service';
 import { HttpClient} from '@angular/common/http';
 import { HomePage } from '../home/home';
+import { ProfilePage } from '../profile/profile';
 /**
  * Generated class for the SigninPage page.
  *
@@ -32,17 +33,17 @@ export class SigninPage {
       content: 'Signing you in...'
     });
 
-    // loading.present();
+     loading.present();
     
     console.log(form.value);
     this.dataService.signIn(form.value.patientId,form.value.password).subscribe(res=>{
-      
+      loading.dismiss()
       this.response=res
       // console.log(this.response)
       if(this.response)
       {
         this.allow=true
-         this.navCtrl.setRoot(HomePage)
+         this.navCtrl.setRoot(ProfilePage)
          const alert = this.alertCtrl.create({
            title: 'Signin Successfull!',
            message: 'Welcome back to the EHR system',
@@ -52,6 +53,7 @@ export class SigninPage {
         
       }
     },err=>{
+      loading.dismiss()
       console.log(err)
       const alert = this.alertCtrl.create({
         title: 'Signin Failed!',
