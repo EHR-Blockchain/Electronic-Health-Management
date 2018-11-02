@@ -19,7 +19,7 @@ import { AboutPage } from '../pages/about/about';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any =ProfilePage;
+  rootPage: any =SigninPage;
   
   pages: Array<{title: string, component: any}>;
 
