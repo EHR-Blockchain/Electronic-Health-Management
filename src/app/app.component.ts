@@ -11,6 +11,7 @@ import { ProfilePage } from '../pages/profile/profile';
 import { PatientmedicalrecordPage } from '../pages/patientmedicalrecord/patientmedicalrecord';
 import { SigninPage } from '../pages/signin/signin';
 import { AboutPage } from '../pages/about/about';
+import { NfcPage } from '../pages/nfc/nfc';
 
 @Component({
   templateUrl: 'app.html',
@@ -30,8 +31,9 @@ export class MyApp {
     this.pages = [
       
       {title:'Profile',component:ProfilePage},
-      {title:'QRCode',component:HomePage},
+      
       {title: 'Medical Records',component:PatientmedicalrecordPage},
+      // {title:'NFC',component:NfcPage},
       {title: 'About',component:AboutPage}
       
     ];
@@ -39,10 +41,20 @@ export class MyApp {
   }
 
   initializeApp() {
+    // this.platform.ready().then(() => {
+    //   // Okay, so the platform is ready and our plugins are available.
+    //   // Here you can do any higher level native things you might need.
+    //   this.statusBar.styleDefault();
+    //   this.splashScreen.hide();
+    // });
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
+      if (this.platform.is('android')) {
+        this.statusBar.overlaysWebView(false);
+        this.statusBar.backgroundColorByHexString('#000000');
+    }
       this.splashScreen.hide();
     });
   }

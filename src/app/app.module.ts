@@ -17,7 +17,8 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { QrcodePage } from '../pages/qrcode/qrcode';
 import { SigninPage } from '../pages/signin/signin';
 import { AboutPage } from '../pages/about/about';
-
+import { NfcPage } from '../pages/nfc/nfc';
+import { NFC, Ndef } from '@ionic-native/nfc';
 @NgModule({
   declarations: [
     MyApp,
@@ -28,7 +29,8 @@ import { AboutPage } from '../pages/about/about';
     PatientmedicalrecordPage,
     QrcodePage,
     SigninPage,
-    AboutPage
+    AboutPage,
+    NfcPage
   ],
   imports: [
     BrowserModule,
@@ -45,14 +47,17 @@ import { AboutPage } from '../pages/about/about';
     PatientmedicalrecordPage,
     QrcodePage,
     SigninPage,
-    AboutPage
+    AboutPage,
+    NfcPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DataServiceProvider,
-    BarcodeScanner
+    BarcodeScanner,
+    NFC,
+    Ndef
   ]
 })
 export class AppModule {}

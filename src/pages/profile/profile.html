@@ -5,7 +5,7 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="dark">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -28,25 +28,22 @@
   </ion-item> -->
   <ion-list>
     <ion-item>
-       <h3>Hi! <b>{{profile.firstName}} {{profile.lastName}}</b></h3> 
+       <h2><b>Hi! {{profile.firstName}} {{profile.lastName}}</b></h2> 
       </ion-item>
   <ion-item>
-      <h4>Email: {{profile.EmailAddress}}</h4>
+      <h3>Email: {{profile.EmailAddress}}</h3>
     </ion-item>
 
     <ion-item>
-        <h4>Date of Birth:  {{profile.Dob}}</h4>
-    </ion-item>
-
-    <ion-item>
-      <h4>Address: </h4>
+        <h3>Date of Birth: {{profile.Dob}}</h3>
     </ion-item>
     <ion-item>
-       <p>Pincode: {{profile.address.PinCode}} </p>
-       <p>City: {{profile.address.city}}</p>
-       <p>Country: {{profile.address.country}}</p>
-       <p>House No : {{profile.address.number}}</p>
-       <p>Street: {{profile.address.street}}</p>
+        <h3>Address: </h3>
+       <h3>Pincode: {{profile.address.PinCode}}</h3>
+       <h3>City: {{profile.address.city}}</h3>
+       <h3>Country: {{profile.address.country}}</h3>
+       <h3>House No : {{profile.address.number}}</h3>
+       <h3>Street: {{profile.address.street}}</h3>
     </ion-item>
  </ion-list>
 </ion-card>

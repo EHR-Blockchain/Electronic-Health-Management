@@ -6,15 +6,15 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>EHR System</ion-title>
+  <ion-navbar color="dark">
+    <ion-title>EHR Patient</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <form #f="ngForm" (ngSubmit)="onSignIn(f)">
+  <form #f="ngForm" (ngSubmit)="onSignIn(f)" style="padding: 50px;">
     <ion-list>
         
         <ion-item >
@@ -28,6 +28,6 @@
         </ion-item>
       
       </ion-list>
-      <button ion-button type="submit" [disabled]="!f.valid" >Sign In</button>
+      <button ion-button full type="submit" [disabled]="!f.valid" color="dark">Sign In</button>
     </form>
 </ion-content>

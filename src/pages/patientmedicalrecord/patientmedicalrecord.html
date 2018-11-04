@@ -5,7 +5,7 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="dark">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -21,19 +21,19 @@
   <ion-card *ngFor="let record of records">
     <ion-list>
 <ion-item>
-  Record Id: {{record.recordId}}
+  Record Id:{{record.recordId}} 
 </ion-item>
 <ion-item>
-    Patient Id: {{record.patientId}}
+    Patient Id:{{record.patientId}}
   </ion-item>
   <ion-item>
      Doctor Id: {{record.doctorId}}
     </ion-item>
     <ion-item>
-       Description: {{record.description}}
+       Description:{{record.description}}
       </ion-item>
       <ion-item>
-        Prescription Given:  {{record.prescription}}
+        Prescription Given: {{record.prescription}} 
         </ion-item>
         <ion-item>
         Date and Time: {{record.encounterTime}}
