@@ -27,7 +27,7 @@ import * as moment from 'moment';
 })
 export class ProfilePage {
   options:BarcodeScannerOptions;
-  docId:any;
+  currentdocId:any;
   date: any;
   body:any = {
     
@@ -39,16 +39,33 @@ export class ProfilePage {
   }
   profile: any;
   src='';
+  authorizeddoctors=[];
+  response;
+bodyrevoke:any=
+{
+  "$class": "org.med.chain.Patient",
+  "patientId": "EHR_pat_$1",
+  "authorized": [  
+  ],
+  "gender": "Male",
+  "age": "20"
+}
+ 
+
   constructor(private barcodeScanner: BarcodeScanner,public http: HttpClient,private dataService:DataServiceProvider,public navCtrl: NavController, public navParams: NavParams) {
     this.dataService.getPatientProfile().subscribe((res)=>{
       console.log(res)
       this.profile=res
     })
     this.body.timestamp = moment();
+ 
+  //  this.revokeAccess()
+  
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');
+    
   }
   openMedicalRecords()
   {
@@ -61,17 +78,52 @@ export class ProfilePage {
       console.log(results)
       //alert(results.format)
       this.body.patient = this.dataService.patientId;
-      this.docId=results.text;
-      this.body.doctorId=this.docId;
+      this.currentdocId=results.text;
+      this.body.doctorId=this.currentdocId;
       this.body.timestamp = moment();
+     
       this.postAllowDoctorWrite()
+
+     this.revokeAccess()
+      
+      
       
   }
-  
+  revokeAccess()
+  {
+    // setTimeout(
+    //   function(){
+    //     console.log("working")
+    //     this.authorizeddoctors.pop(this.authorizeddoctors.indexOf("EHR_doc_$1"));
+    //   }
+    //   ,3000)
+      this.dataService.getPatientById().subscribe(res=>{
+        this.response=res;
+      console.log(this.response)
+      //console.log(this.response.authorized);
+      this.bodyrevoke.gender=this.response.gender;
+      this.bodyrevoke.age=this.response.age
+      this.authorizeddoctors=this.response.authorized;
+      console.log(this.authorizeddoctors)
+      this.authorizeddoctors.splice(this.authorizeddoctors.indexOf(this.currentdocId),1)
+      console.log(this.authorizeddoctors)
+    })
+    this.bodyrevoke.authorized=this.authorizeddoctors
+    this.bodyrevoke.patientId=this.dataService.patientId
+    
+    let headers = new HttpHeaders();
+    headers.append('Content-Type','application/json');
+    this.http.put('http://172.16.1.15:3000/api/Patient/'+this.dataService.patientId,this.bodyrevoke,{headers:headers}).map(res=>
+     //alert(res)
+     res
+    ).subscribe(res=>{
+      console.log(res);
+    })
+  }
   postAllowDoctorWrite(){
     let headers = new HttpHeaders();
     headers.append('Content-Type','application/json');
-    this.http.post('http://172.16.8.95:3000/api/AllowDoctorWrite',this.body,{headers:headers}).map(res=>
+    this.http.post('http://172.16.1.15:3000/api/AllowDoctorWrite',this.body,{headers:headers}).map(res=>
      //alert(res)
      res
     ).subscribe(res=>{

@@ -59,7 +59,7 @@ export class QrcodePage {
   postAllowDoctorWrite(){
     let headers = new HttpHeaders();
     headers.append('Content-Type','application/json');
-    this.http.post('http://172.16.8.95:3000/api/AllowDoctorWrite',this.body,{headers:headers}).map(res=>
+    this.http.post('http://172.16.1.15:3000/api/AllowDoctorWrite',this.body,{headers:headers}).map(res=>
      alert(res)
     ).subscribe(res=>{
       console.log(res);

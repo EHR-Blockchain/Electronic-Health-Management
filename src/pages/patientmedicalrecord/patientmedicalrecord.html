@@ -9,7 +9,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Medical Record</ion-title>
+    <ion-title>Medical Records</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -22,6 +22,7 @@
     <ion-list>
 <ion-item>
   Record Id:{{record.recordId}} 
+
 </ion-item>
 <ion-item>
     Patient Id:{{record.patientId}}
@@ -40,6 +41,9 @@
           </ion-item>
           <ion-item>
           Location:  {{record.location}}
+            </ion-item>
+            <ion-item>
+              <button ion-button color="dark" (click)="claimInsurance(record)">Claim Insurance</button>
             </ion-item>
     </ion-list>
   

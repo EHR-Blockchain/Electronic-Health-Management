@@ -18,7 +18,7 @@ export class DataServiceProvider {
   patientId: string
   
   constructor(public http: HttpClient) {
-    this.baseUrl = 'http://172.16.8.95:3000/api/';
+    this.baseUrl = 'http://172.16.1.15:3000/api/';
     console.log('Hello DataServiceProvider Provider');
   }
   getPatients()
@@ -26,6 +26,11 @@ export class DataServiceProvider {
     return this.http.get(this.baseUrl+'Patient').map(res=>
       res
     );
+  }
+  getPatientById()
+  {
+    return this.http.get(this.baseUrl+'Patient/'+this.patientId).map(res=>
+      res);
   }
   getPatientProfile()
   {
@@ -45,6 +50,13 @@ export class DataServiceProvider {
     return this.http.get(this.baseUrl+'queries/selectMedicalRecordByPatientId?patientId='+this.patientId).map(res=>
       res);
   }
+  claimInsurance()
+  {
+    return this.http.get(this.baseUrl+'InsuranceClaim').map(res=>
+      res
+    );
+  }
+ 
   private catchError(error:Response|any)
   {
     console.log(error);
