@@ -84,7 +84,7 @@ bodyrevoke:any=
      
       this.postAllowDoctorWrite()
 
-     this.revokeAccess()
+     //this.revokeAccess()
       
       
       
@@ -118,8 +118,11 @@ bodyrevoke:any=
      res
     ).subscribe(res=>{
       console.log(res);
+      alert("Access Revoked");
+      this.currentdocId=null;
     })
   }
+
   postAllowDoctorWrite(){
     let headers = new HttpHeaders();
     headers.append('Content-Type','application/json');

@@ -19,6 +19,7 @@ import { SigninPage } from '../pages/signin/signin';
 import { AboutPage } from '../pages/about/about';
 import { NfcPage } from '../pages/nfc/nfc';
 import { NFC, Ndef } from '@ionic-native/nfc';
+import { SettingsPage } from '../pages/settings/settings';
 @NgModule({
   declarations: [
     MyApp,
@@ -30,7 +31,8 @@ import { NFC, Ndef } from '@ionic-native/nfc';
     QrcodePage,
     SigninPage,
     AboutPage,
-    NfcPage
+    NfcPage,
+    SettingsPage
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,8 @@ import { NFC, Ndef } from '@ionic-native/nfc';
     QrcodePage,
     SigninPage,
     AboutPage,
-    NfcPage
+    NfcPage,
+    SettingsPage
   ],
   providers: [
     StatusBar,

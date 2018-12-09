@@ -48,13 +48,17 @@
  </ion-list>
 </ion-card>
 <!-- <button ion-button (click)="scanBarcode()">Scan</button> -->
-  <ion-card *ngIf="docId">
+<!-- <ion-card *ngIf="docId"></ion-card> -->
+  <ion-card *ngIf="currentdocId">
     <ion-item>
         <h3>Access granted to Doctor with  </h3>
     </ion-item>
   
-  <ion-item>Doctor Id :<b>{{docId}}</b></ion-item>
+  <ion-item>Doctor Id :<b>{{currentdocId}}</b></ion-item>
   <ion-item>At {{body.timestamp}}</ion-item>
+  <ion-item>
+    <button ion-button color="dark" (click)="revokeAccess()">Revoke Access</button>
+  </ion-item>
   </ion-card>
   <!-- <button ion-button (click)=" postAllowDoctorWrite()">Give Write Access</button> -->
 <button ion-button icon-start color="dark" (click)="openMedicalRecords()">

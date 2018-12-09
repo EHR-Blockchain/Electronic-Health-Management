@@ -21,6 +21,7 @@ import { ProfilePage } from '../profile/profile';
 export class SigninPage {
   response:any;
   allow =false;
+  password:any;
   constructor(public http:HttpClient,public dataService:DataServiceProvider,private alertCtrl: AlertController, private loadingCtrl: LoadingController,public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -39,8 +40,10 @@ export class SigninPage {
     this.dataService.signIn(form.value.patientId,form.value.password).subscribe(res=>{
       loading.dismiss()
       this.response=res
+      console.log(this.response.password)
+      console.log(form.value.password)
       // console.log(this.response)
-      if(this.response)
+      if(this.response.password==form.value.password)
       {
         this.allow=true
          this.navCtrl.setRoot(ProfilePage)
@@ -51,6 +54,14 @@ export class SigninPage {
          });
          alert.present();
         
+      }
+      else{
+        const alert = this.alertCtrl.create({
+          title: 'Signin Failed!',
+          message: 'Wrong Credentials/User doesn\'t exist',
+          buttons: ['Ok']
+        });
+        alert.present()
       }
     },err=>{
       loading.dismiss()

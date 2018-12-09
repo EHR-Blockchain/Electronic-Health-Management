@@ -12,6 +12,7 @@ import { PatientmedicalrecordPage } from '../pages/patientmedicalrecord/patientm
 import { SigninPage } from '../pages/signin/signin';
 import { AboutPage } from '../pages/about/about';
 import { NfcPage } from '../pages/nfc/nfc';
+import { SettingsPage } from '../pages/settings/settings';
 
 @Component({
   templateUrl: 'app.html',
@@ -34,7 +35,8 @@ export class MyApp {
       
       {title: 'Medical Records',component:PatientmedicalrecordPage},
       // {title:'NFC',component:NfcPage},
-      {title: 'About',component:AboutPage}
+      {title: 'About',component:AboutPage},
+      {title: 'Settings',component:SettingsPage}
       
     ];
 
