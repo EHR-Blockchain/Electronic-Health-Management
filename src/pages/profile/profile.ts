@@ -48,7 +48,8 @@ bodyrevoke:any=
   "authorized": [  
   ],
   "gender": "Male",
-  "age": "20"
+  "age": "20",
+  "password":""
 }
  
 
@@ -104,13 +105,21 @@ bodyrevoke:any=
       this.bodyrevoke.gender=this.response.gender;
       this.bodyrevoke.age=this.response.age
       this.authorizeddoctors=this.response.authorized;
+      this.bodyrevoke.password=this.response.password
+    
       console.log(this.authorizeddoctors)
       this.authorizeddoctors.splice(this.authorizeddoctors.indexOf(this.currentdocId),1)
       console.log(this.authorizeddoctors)
+      this.bodyrevoke.authorized=this.authorizeddoctors
+      this.bodyrevoke.patientId=this.dataService.patientId
+      this.revokePut()
     })
-    this.bodyrevoke.authorized=this.authorizeddoctors
-    this.bodyrevoke.patientId=this.dataService.patientId
     
+   
+    
+    
+  }
+  revokePut(){
     let headers = new HttpHeaders();
     headers.append('Content-Type','application/json');
     this.http.put('http://172.16.1.15:3000/api/Patient/'+this.dataService.patientId,this.bodyrevoke,{headers:headers}).map(res=>
@@ -122,7 +131,6 @@ bodyrevoke:any=
       this.currentdocId=null;
     })
   }
-
   postAllowDoctorWrite(){
     let headers = new HttpHeaders();
     headers.append('Content-Type','application/json');
@@ -131,6 +139,7 @@ bodyrevoke:any=
      res
     ).subscribe(res=>{
       console.log(res);
+      
     })
     //alert("You have given access to a new doctor")
   }

@@ -37,13 +37,16 @@
         Prescription Given: {{record.prescription}} 
         </ion-item>
         <ion-item>
+            <img src="{{record.ImageURL}}" alt="Loading Image..." height="190" width="50" padding>
+        </ion-item>
+        <ion-item>
         Date and Time: {{record.encounterTime}}
           </ion-item>
           <ion-item>
           Location:  {{record.location}}
             </ion-item>
             <ion-item>
-              <button ion-button color="dark" (click)="claimInsurance(record)">Claim Insurance</button>
+              <button ion-button color="dark" (click)="claimInsurance(record)" [disabled]="claimdone">Claim Insurance</button>
             </ion-item>
     </ion-list>
   

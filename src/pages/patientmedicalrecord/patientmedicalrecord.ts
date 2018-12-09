@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
 import {DataServiceProvider} from '../../providers/data-service/data-service';
 
 import * as moment from 'moment';
@@ -23,6 +23,7 @@ export class PatientmedicalrecordPage {
   claims:any = []
   claimsLength:any;
   newClaimIdNo:any;
+  claimdone:any;
   claimBody:any = {
     "$class": "org.med.chain.InsuranceClaim",
   "claimID": "string",
@@ -38,7 +39,7 @@ export class PatientmedicalrecordPage {
 // var timeComponent = date.utc().format('HH:mm:ss');
 // console.log(dateComponent);
 // console.log(timeComponent);
-  constructor(public http:HttpClient,public dataService:DataServiceProvider,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public http:HttpClient,public dataService:DataServiceProvider,private loadingCtrl: LoadingController, public navCtrl: NavController, public navParams: NavParams) {
     
   }
 
@@ -52,7 +53,10 @@ export class PatientmedicalrecordPage {
       })
   }
   claimInsurance(record)
-  {
+  { const loading = this.loadingCtrl.create({
+    content: 'Processing Your Request'
+  });
+  loading.present()
     console.log(record.recordId)
     this.recordId=record.recordId;
    this.dataService.claimInsurance().subscribe(res=>{
@@ -61,8 +65,10 @@ export class PatientmedicalrecordPage {
      console.log(this.claims.length)
      this.claimsLength=this.claims.length;
      this.postClaimInsurance()
+     loading.dismiss()
+     alert("Processed Your Request");
    })
-
+    this.claimdone=true;
 
 
 
